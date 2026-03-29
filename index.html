@@ -256,6 +256,29 @@ body {
   margin-bottom: 50px;
 }
 
+.resume-section {
+  text-align: center;
+  padding-bottom: 40px;
+  margin-bottom: 50px;
+}
+
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: 30px;
+  background-color: #f7c6d9;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(247, 198, 217, 0.5);
+}
+
+.resume-btn img {
+  width: 22px;
+  height: 22px;
+}
   </style>
 
 
@@ -325,14 +348,15 @@ body {
         <!-------------------------------------------------------------------------------------------->
         <!--Start resume download thing-->
           <div class="section-card resume-section">
+ <div class="section-card resume-section">
   <h2 style="text-align:center;">Resume</h2>
 
-  <div class="resume-wrapper">
-   <a href="/file/resume.pdf" download="Ara-Meilia-Resume.pdf" class="custom-button-flat pulse-danger resume-btn">
-  <img src="img/download.png" alt="Download resume icon">
-  <span>Download My Resume!</span>
-</a>
-  </div>
+  <p style="text-align:center; margin-top: 20px;">
+    <a href="/file/resume.pdf" download="Ara-Meilia-Resume.pdf" class="resume-btn">
+      <img src="img/download.png" alt="Download resume icon">
+      <span>Download My Resume!</span>
+    </a>
+  </p>
 </div>
 </body>
 
