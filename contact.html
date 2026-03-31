@@ -10,10 +10,9 @@
   <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/menu.js"></script>
 
   <style>
-    /* 1. Global Reset to kill the grey gaps */
+    /* 1. Global Reset */
     * {
       box-sizing: border-box;
     }
@@ -24,62 +23,103 @@
       width: 100%;
       overflow-x: hidden;
       background-color: #ffffff;
+      font-family: 'Inter', Arial, sans-serif;
     }
 
     /* 2. Banner Fix - Edge to Edge Pink */
-    .menu-container, .menu {
+    .menu-container {
       width: 100% !important;
       background-color: #d993a5 !important;
       margin: 0 !important;
       padding: 0 !important;
-      display: block;
       position: relative;
     }
 
-    /* 3. Navigation Alignment - This forces links to the far right */
- /* 1. The Main Bar: Keeps everything on one line and spreads them out */
-  .menu-table {
-    width: 100% !important;
-    max-width: none !important;
-    display: flex !important;
-    justify-content: space-between !important; /* Pushes Logo left, Links right */
-    align-items: center !important;
-    height: 60px;
-    padding: 0 60px !important; /* This creates the consistent 'gap' from the screen edges */
-    margin: 0 !important;
-    box-sizing: border-box;
-  }
+    .menu-table {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      height: 65px;
+      padding: 0 40px !important;
+      margin: 0 !important;
+      box-sizing: border-box;
+    }
 
-  /* 2. The Link Group: Ensures the links stay together on the right */
-  .menu-items {
-    display: flex !important;
-    gap: 35px; /* Adjust this to change the space BETWEEN About, Projects, and Contact */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: transparent !important;
-  }
+    /* Updated Logo Style for Link */
+    .logo a {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: white !important;
+      text-decoration: none !important;
+      white-space: nowrap;
+    }
 
-  /* 3. The Logo: Keeps your name clean on the left */
-  .logo {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    white-space: nowrap;
-  }
+    .logo a:hover {
+      opacity: 0.9;
+    }
 
-    .menu a {
+    /* 3. Navigation Links */
+    .menu-items {
+      display: flex !important;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-items a {
       color: white !important;
       font-weight: 600;
       text-decoration: none;
+      font-size: 16px;
     }
 
-    .menu a:hover {
-      opacity: 0.85;
+    /* 4. Hamburger Button */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      z-index: 1001;
     }
 
-    /* 4. Contact Card Styling */
+    /* 5. Responsive Fixes */
+    @media (max-width: 1000px) {
+      .menu-toggle {
+        display: block !important;
+      }
+
+      .menu-items {
+        display: none !important;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: #d993a5;
+        padding: 20px 0 !important;
+        gap: 20px !important;
+        text-align: center;
+        z-index: 1000;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      }
+
+      .menu-items.active {
+        display: flex !important;
+      }
+
+      .menu-table {
+        padding: 0 20px !important;
+      }
+    }
+
+    /* 6. Contact Card Styling */
     .content {
       max-width: 900px;
       margin: 60px auto 80px auto;
@@ -94,20 +134,14 @@
       text-align: center;
     }
 
-    .contact-card h2 {
-      margin-bottom: 25px;
-    }
-
     .contact-icons {
       display: flex;
       justify-content: center;
       gap: 30px;
       margin-bottom: 30px;
-      flex-wrap: wrap;
     }
 
     .contact-icons a {
-      text-decoration: none;
       background: #fafafa;
       padding: 15px;
       border-radius: 16px;
@@ -115,23 +149,9 @@
       transition: 0.2s;
     }
 
-    .contact-icons a:hover {
-      transform: translateY(-4px);
-    }
-
     .contact-icons img {
       width: 40px;
       height: 40px;
-    }
-
-    .email {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    form {
-      margin-top: 30px;
     }
 
     textarea {
@@ -141,9 +161,7 @@
       border-radius: 12px;
       border: 1px solid #ddd;
       resize: none;
-      font-size: 14px;
       margin-bottom: 15px;
-      box-sizing: border-box;
     }
 
     .send-btn {
@@ -151,53 +169,29 @@
       border: none;
       padding: 12px 25px;
       border-radius: 25px;
-      font-size: 14px;
       cursor: pointer;
-      transition: 0.2s;
+      font-weight: bold;
     }
-
-    .send-btn:hover {
-      background: #ffc2d1;
-    }
-
-    /* Mobile Tweaks */
-    @media (max-width: 600px) {
-      .menu-table {
-        padding: 0 20px !important;
-      }
-      .menu-items {
-        gap: 15px;
-      }
-    }
-
-    @media (max-width: 600px) {
-  .menu-table {
-    flex-direction: column !important; /* Stacks name above the links */
-    height: auto !important;          /* Lets the pink bar grow taller to fit both */
-    padding: 15px 0 !important;       /* Adds some breathing room top and bottom */
-  }
-
-  .logo {
-    margin-bottom: 10px !important;    /* Adds space between your name and the links */
-    font-size: 20px !important;        /* Makes name slightly smaller for mobile */
-  }
-
-  .menu-items {
-    margin-left: 0 !important;         /* Centering the links */
-    justify-content: center !important; 
-    width: 100% !important;
-    gap: 15px !important;              /* Tightens the space between About, Projects, Contact */
-  }
-
-  .menu a {
-    font-size: 14px !important;        /* Makes links readable but compact */
-  }
-}
   </style>
 </head>
 
 <body>
-  <div class="menu-container"></div>
+
+  <div class="menu-container">
+    <div class="menu-table">
+      <div class="logo">
+        <a href="index.html">Ara Meilia</a>
+      </div>
+      
+      <button class="menu-toggle" id="mobile-menu">☰</button>
+      
+      <ul class="menu-items" id="nav-list">
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
 
   <div class="content">
     <div class="contact-card">
@@ -212,9 +206,7 @@
         </a>
       </div>
 
-      <div class="email">
-        aishahmeilia@gmail.com
-      </div>
+      <div class="email">aishahmeilia@gmail.com</div>
 
       <form action="mailto:aishahmeilia@gmail.com" method="POST" enctype="text/plain">
         <textarea name="message" placeholder="Write your message here..."></textarea>
@@ -223,6 +215,15 @@
       </form>
     </div>
   </div>
-</body>
 
+  <script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
+
+</body>
 </html>

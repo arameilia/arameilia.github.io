@@ -1,491 +1,378 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
   <title>Ara Meilia | Personal Website</title>
-  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="css/controls.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="css/custom.css" media="screen" rel="stylesheet" type="text/css" />
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="js/menu.js"></script>
-  <script src="js/footer.js"></script>
-
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
   <style>
+    /* 1. Global Reset */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #ffffff !important;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* 2. Navigation Styling (Matches Contact/Projects) */
+    .menu-container {
+      width: 100% !important;
+      background-color: #d993a5 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: relative;
+    }
+
+    .menu-table {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      height: 65px;
+      padding: 0 40px !important;
+      margin: 0 !important;
+      box-sizing: border-box;
+    }
+
+    .logo a {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: white !important;
+      text-decoration: none !important;
+      white-space: nowrap;
+    }
+
+    .menu-items {
+      display: flex !important;
+      gap: 35px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-items a {
+      color: white !important;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    /* 3. Hamburger Button */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+      z-index: 1001;
+    }
+
+    /* 4. Responsive Navigation Fix */
+    @media (max-width: 1000px) {
+      .menu-toggle {
+        display: block !important;
+      }
+
+      .menu-items {
+        display: none !important;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background-color: #d993a5;
+        padding: 20px 0 !important;
+        gap: 20px !important;
+        text-align: center;
+        z-index: 1000;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      }
+
+      .menu-items.active {
+        display: flex !important;
+      }
+
+      .menu-table {
+        padding: 0 20px !important;
+      }
+    }
+
+    /* 5. About Page Content Styling */
+    .banner {
+      width: 100%;
+      height: 240px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin-bottom: 20px;
+    }
+
+    .about-card {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 30px 24px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .about-row {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 6px solid #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-photo-wrap {
+      flex: 0 0 200px;
+    }
+
+    .about-text-wrap {
+      flex: 1;
+    }
+
+    .skills-section {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 28px 24px;
+      border-radius: 20px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      background-color: #ffffff;
+    }
+
+    .skills-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .skills-icons-row {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .skill-icon-card {
+      width: 110px;
+      min-height: 120px;
+      border-radius: 18px;
+      background-color: #f7f7f7;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 14px 10px;
+      text-align: center;
+    }
+
+    .skill-icon-card img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .skill-icon-card p {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    /* 6. ILLUMINATED RESUME BUTTON WITH ANIMATIONS */
+    .section-card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      margin: 30px auto;
+      max-width: 900px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    /* Animation: Continuous pulsing pink glow */
+    @keyframes pinkGlowPulse {
+      0% { box-shadow: 0 4px 10px rgba(217, 147, 165, 0.3); }
+      50% { box-shadow: 0 10px 35px rgba(217, 147, 165, 0.8); }
+      100% { box-shadow: 0 4px 10px rgba(217, 147, 165, 0.3); }
+    }
+
+    /* Animation: Subtle diagonal shine sweep */
+    @keyframes subtleShine {
+      0% { left: -100%; }
+      20% { left: 100%; }
+      100% { left: 100%; }
+    }
+
+    .resume-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      border-radius: 30px;
+      
+      background-color: #ffffff !important;
+      color: #333 !important;
+      text-decoration: none;
+      font-weight: 600;
+      
+      position: relative;
+      overflow: hidden; /* Clips the shine effect */
+      border: 1px solid #f0f0f0;
+      
+      /* Apply pulsing illumination automatically */
+      animation: pinkGlowPulse 3s ease-in-out infinite;
+      transition: all 0.3s ease;
+    }
+
+    /* The Shining Effect Layer */
+    .resume-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.6) 50%, 
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+      animation: subtleShine 6s infinite; /* Shines every 6 seconds */
+    }
+
+    .resume-btn:hover {
+      transform: translateY(-3px);
+      background-color: #ffffff !important;
+      /* Stronger fixed glow on hover */
+      box-shadow: 0 12px 40px rgba(217, 147, 165, 0.95) !important;
+      animation: none; /* Stops pulse to focus on the strong glow */
+    }
+
+    .resume-btn img {
+      width: 22px;
+      height: 22px;
+      z-index: 1; /* Keeps icon above shine */
+    }
     
-  body {
-  margin: 0;
-  background-color: #ffffff !important;
-  font-family: 'Inter', sans-serif;
-}
+    .resume-btn span {
+      z-index: 1; /* Keeps text above shine */
+    }
 
-.content-container,
-.content {
-  background-color: #ffffff !important;
-}
-
-.menu {
-  background-color: #d993a5 !important;
-  width: 100%;
-}
-
-.menu a {
-  color: white !important;
-  font-weight: 600;
-}
-
-.menu a:hover {
-  opacity: 0.8;
-}
-      .menu-index {
-    color: rgb(255, 255, 255) !important;
-    opacity: 1 !important;
-    font-weight: 700 !important;
-  }
-
-  .profile-photo {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    margin: 0 auto;
-  }
-
-  .skill-icons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 10px;
-  }
-
-  .skill-icons img {
-    width: 42px;
-    height: 42px;
-    object-fit: contain;
-  }
-
-  .skill-badge {
-    display: inline-block;
-    padding: 8px 14px;
-    margin: 6px 6px 0 0;
-    background-color: #f2f2f2;
-    border-radius: 20px;
-    font-size: 14px;
-  }
-
-  .custom-banner {
-  height: 610px;  
-  background-position: center;
-  background-size: cover;
-  margin-bottom: 30px;
-}
-.banner {
-  width: 100vw;              /* full screen width */
-  height: 240px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin: 0;                /* remove spacing */
-}
-
-/* remove side gaps caused by container */
-body {
-  margin: 0;
-}
-
-.banner {
-  width: 100%;
-}
-
-.banner {
-  margin-bottom: 20px;
-}
-
-.about-row {
-  margin-top: 20px;
-}
-
-.about-row {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-top: 20px;
-}
-
-.about-photo-wrap {
-  flex: 0 0 180px;
-}
-
-.about-text-wrap {
-  flex: 1;
-}
-
-.profile-photo {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-
-  border: 6px solid #ffffff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  background-color: white;
-}
-
-.about-photo-wrap {
-  flex: 0 0 200px;
-}
-
-.skills-section {
-  margin-top: 30px;
-  padding: 28px 24px;
-  border-radius: 20px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  background-color: #ffffff;
-}
-
-.skills-title {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.skills-icons-row {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.skill-icon-card {
-  width: 110px;
-  min-height: 120px;
-  border-radius: 18px;
-  background-color: #f7f7f7;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 14px 10px;
-  text-align: center;
-}
-
-.skill-icon-card img {
-  width: 42px;
-  height: 42px;
-  object-fit: contain;
-  margin-bottom: 10px;
-}
-
-.skill-icon-card p {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.3;
-}
-
-@media (max-width: 768px) {
-  .skills-section {
-    padding: 22px 16px;
-  }
-
-  .skills-icons-row {
-    gap: 14px;
-  }
-
-  .skill-icon-card {
-    width: 95px;
-    min-height: 110px;
-  }
-
-  .skill-icon-card img {
-    width: 36px;
-    height: 36px;
-  }
-
-  .skill-icon-card p {
-    font-size: 12px;
-  }
-}
-
-.about-card {
-  margin-top: 30px;
-  margin-bottom: 20px;
-  padding: 30px 24px;
-  background-color: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-/* center the button */
-.resume-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-/* make button bigger + pastel */
-.resume-btn {
-  padding: 16px 28px;
-  font-size: 16px;
-  border-radius: 30px;
-
-  background-color: #ffffff !important;   /* pastel pink */
-  color: #333 !important;
-
-  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.6);
-}
-
-/* hover effect */
-.resume-btn:hover {
-  background-color: hsl(0, 0%, 100%) !important;
-  transform: translateY(-2px);
-}
-
-/* make icon bigger */
-.resume-btn img {
-  width: 22px;
-  height: 22px;
-  margin-right: 8px;
-}
-
-.section-card {
-  background: white;
-  border-radius: 20px;
-  padding: 30px;
-  margin: 30px auto;
-  max-width: 900px;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.section-card {
-  background: white;
-  border-radius: 20px;
-  padding: 30px;
-  margin: 30px auto;
-  max-width: 900px;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.resume-section {
-  text-align: center;
-  padding-bottom: 40px;
-  margin-bottom: 50px;
-}
-
-.resume-section {
-  text-align: center;
-  padding-bottom: 40px;
-  margin-bottom: 50px;
-}
-
-.resume-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 16px 28px;
-  border-radius: 30px;
-  background-color: #f7c6d9;
-  color: #333;
-  text-decoration: none;
-  font-weight: 600;
-  box-shadow: 0 6px 16px rgba(247, 198, 217, 0.5);
-}
-
-.resume-btn img {
-  width: 22px;
-  height: 22px;
-}
-.content-container,
-.content {
-  background-color: transparent !important;
-}
-body {
-  margin: 0;
-  background-color: #ffffff !important;
-  font-family: 'Inter', sans-serif;
-}
-
-.content-container,
-.content {
-  background-color: #ffffff !important;
-}
-
-.menu {
-  background-color: #d993a5 !important;
-  width: 100%;
-}
-
-.menu a {
-  color: white !important;
-  font-weight: 600;
-}
-
-.menu a:hover {
-  opacity: 0.8;
-}
-
-.menu-container {
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: #d993a5 !important;
-}
-
-.menu {
-  width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: #d993a5 !important;
-}
-
-/* 1. The Main Bar: Keeps everything on one line and spreads them out */
-  /* 1. The Main Bar: Keeps everything on one line and spreads them out */
-  .menu-table {
-    width: 100% !important;
-    max-width: none !important;
-    display: flex !important;
-    justify-content: space-between !important; /* Pushes Logo left, Links right */
-    align-items: center !important;
-    height: 60px;
-    padding: 0 60px !important; /* This creates the consistent 'gap' from the screen edges */
-    margin: 0 !important;
-    box-sizing: border-box;
-  }
-
-  /* 2. The Link Group: Ensures the links stay together on the right */
-  .menu-items {
-    display: flex !important;
-    gap: 35px; /* Adjust this to change the space BETWEEN About, Projects, and Contact */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background: transparent !important;
-  }
-
-  /* 3. The Logo: Keeps your name clean on the left */
-  .logo {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    white-space: nowrap;
-  }
-.menu a {
-  color: white !important;
-  font-weight: 600;
-}
-
-@media (max-width: 600px) {
-  .menu-table {
-    flex-direction: column !important; /* Stacks name above the links */
-    height: auto !important;          /* Lets the pink bar grow taller to fit both */
-    padding: 15px 0 !important;       /* Adds some breathing room top and bottom */
-  }
-
-  .logo {
-    margin-bottom: 10px !important;    /* Adds space between your name and the links */
-    font-size: 20px !important;        /* Makes name slightly smaller for mobile */
-  }
-
-  .menu-items {
-    margin-left: 0 !important;         /* Centering the links */
-    justify-content: center !important; 
-    width: 100% !important;
-    gap: 15px !important;              /* Tightens the space between About, Projects, Contact */
-  }
-
-  .menu a {
-    font-size: 14px !important;        /* Makes links readable but compact */
-  }
-}
+    @media (max-width: 768px) {
+      .about-row {
+        flex-direction: column;
+        text-align: center;
+      }
+      .about-photo-wrap {
+        flex: 0 0 auto;
+      }
+    }
   </style>
-
+</head>
 
 <body>
-  <div class="menu-container"></div>
 
-<!-- FULL WIDTH BANNER -->
-<div class="banner" style="background-image: url('img/bellevueimg.jpeg');"></div>
-
-<div class="content-container">
-   
-  </div>
-</div>
-<!-------------------------------------------------------------------------------------------->
-<!--Start Header-->
-<div class="about-card">
-  <div class="about-row">
-    <div class="about-photo-wrap">
-      <img class="profile-photo" src="img/ara-photo.jpg" alt="Ara Meilia">
-    </div>
-
-    <div class="about-text-wrap">
-      <h2 id="about">About Me</h2>
-      <p class="text">
-        Undergraduate Mechanical Engineering student at Bellevue College, based in Bellevue, WA, with a passion for product design and automation. Developing practical engineering experience through hands-on projects in CAD, electronics, and embedded systems, with plans to transfer to a four-year institution.
-      </p>
-    </div>
-  </div>
-</div>
-<!--End Header-->
-    <!--End Header-->
-    <!-------------------------------------------------------------------------------------------->
-    <div class="content">
+  <div class="menu-container">
+    <div class="menu-table">
+      <div class="logo">
+        <a href="index.html">Ara Meilia</a>
+      </div>
       
-        <!-------------------------------------------------------------------------------------------->
-        <!--Start Introduction-->
-        
-           
-        <!-------------------------------------------------------------------------------------------->
-        <!--Start Text Only-->
-       <div class="skills-section">
-  <h2 id="skills" class="skills-title">Skills</h2>
-
-  <div class="skills-icons-row">
-    <div class="skill-icon-card">
-      <img src="img/onshape.png" alt="Onshape CAD">
-      <p>Onshape CAD</p>
-    </div>
-
-    <div class="skill-icon-card">
-      <img src="img/cpp.png" alt="C++">
-      <p>C++</p>
-    </div>
-
-    <div class="skill-icon-card">
-      <img src="img/github.png" alt="GitHub and Git">
-      <p>Git / GitHub</p>
-    </div>
-
-    <div class="skill-icon-card">
-      <img src="img/arduino.png" alt="Arduino">
-      <p>Arduino</p>
+      <button class="menu-toggle" id="mobile-menu">☰</button>
+      
+      <ul class="menu-items" id="nav-list">
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
   </div>
-</div>
-        <!--End Text Only-->
-        <!-------------------------------------------------------------------------------------------->
-        <!--Start resume download thing-->
-      
- <div class="section-card resume-section">
-  <h2 style="text-align:center;">Resume</h2>
 
-  <p style="text-align:center; margin-top: 20px;">
-    <a href="/file/resume.pdf" download="Ara-Meilia-Resume.pdf" class="resume-btn">
-      <img src="img/download.png" alt="Download resume icon">
-      <span>Download My Resume!</span>
-    </a>
-  </p>
-</div>
+  <div class="banner" style="background-image: url('img/bellevueimg.jpeg');"></div>
+
+  <div class="about-card">
+    <div class="about-row">
+      <div class="about-photo-wrap">
+        <img class="profile-photo" src="img/ara-photo.jpg" alt="Ara Meilia">
+      </div>
+
+      <div class="about-text-wrap">
+        <h2 id="about">About Me</h2>
+        <p>
+          Undergraduate Mechanical Engineering student at Bellevue College, based in Bellevue, WA, with a passion for product design and automation. Developing practical engineering experience through hands-on projects in CAD, electronics, and embedded systems, with plans to transfer to a four-year institution.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="skills-section">
+    <h2 id="skills" class="skills-title">Skills</h2>
+    <div class="skills-icons-row">
+      <div class="skill-icon-card">
+        <img src="img/onshape.png" alt="Onshape CAD">
+        <p>Onshape CAD</p>
+      </div>
+      <div class="skill-icon-card">
+        <img src="img/cpp.png" alt="C++">
+        <p>C++</p>
+      </div>
+      <div class="skill-icon-card">
+        <img src="img/github.png" alt="GitHub and Git">
+        <p>Git / GitHub</p>
+      </div>
+      <div class="skill-icon-card">
+        <img src="img/arduino.png" alt="Arduino">
+        <p>Arduino</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <h2>Resume</h2>
+    <p style="margin-top: 20px;">
+      <a href="/file/resume.pdf" download="Ara-Meilia-Resume.pdf" class="resume-btn">
+        <img src="img/download.png" alt="Download">
+        <span>Download My Resume!</span>
+      </a>
+    </p>
+  </div>
+
+  <script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
+
 </body>
 
 </html>
