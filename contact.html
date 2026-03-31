@@ -37,32 +37,36 @@
     }
 
     /* 3. Navigation Alignment - This forces links to the far right */
+ /* 1. The Main Bar: Keeps everything on one line and spreads them out */
   .menu-table {
     width: 100% !important;
     max-width: none !important;
     display: flex !important;
+    justify-content: space-between !important; /* Pushes Logo left, Links right */
     align-items: center !important;
     height: 60px;
-    padding: 0 40px !important;
+    padding: 0 60px !important; /* This creates the consistent 'gap' from the screen edges */
     margin: 0 !important;
+    box-sizing: border-box;
   }
 
-  /* 2. Use margin-left: auto to push this entire group to the right */
+  /* 2. The Link Group: Ensures the links stay together on the right */
   .menu-items {
-    margin-left: auto !important; 
     display: flex !important;
-    gap: 30px;
+    gap: 35px; /* Adjust this to change the space BETWEEN About, Projects, and Contact */
     list-style: none;
+    margin: 0;
     padding: 0;
     background: transparent !important;
   }
 
-  /* 3. Keep the logo pinned to the left */
+  /* 3. The Logo: Keeps your name clean on the left */
   .logo {
     margin: 0;
     font-size: 24px;
     font-weight: bold;
     color: white;
+    white-space: nowrap;
   }
 
     .menu a {
