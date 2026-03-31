@@ -169,6 +169,30 @@
         gap: 15px;
       }
     }
+
+    @media (max-width: 600px) {
+  .menu-table {
+    flex-direction: column !important; /* Stacks name above the links */
+    height: auto !important;          /* Lets the pink bar grow taller to fit both */
+    padding: 15px 0 !important;       /* Adds some breathing room top and bottom */
+  }
+
+  .logo {
+    margin-bottom: 10px !important;    /* Adds space between your name and the links */
+    font-size: 20px !important;        /* Makes name slightly smaller for mobile */
+  }
+
+  .menu-items {
+    margin-left: 0 !important;         /* Centering the links */
+    justify-content: center !important; 
+    width: 100% !important;
+    gap: 15px !important;              /* Tightens the space between About, Projects, Contact */
+  }
+
+  .menu a {
+    font-size: 14px !important;        /* Makes links readable but compact */
+  }
+}
   </style>
 </head>
 
