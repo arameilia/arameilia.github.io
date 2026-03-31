@@ -353,26 +353,28 @@ body {
     display: flex !important;
     align-items: center !important;
     height: 60px;
-    padding: 0 40px !important;
+    padding: 0 40px !important; /* Adjust this to match the padding on other pages */
     margin: 0 !important;
   }
 
-  /* 2. Use margin-left: auto to push this entire group to the right */
+  /* 2. This pushes the entire link group to the far right */
   .menu-items {
     margin-left: auto !important; 
     display: flex !important;
-    gap: 30px;
+    gap: 35px; /* Ensure this gap matches your Projects/Contact page exactly */
     list-style: none;
     padding: 0;
+    margin: 0;
     background: transparent !important;
   }
 
-  /* 3. Keep the logo pinned to the left */
+  /* 3. Your Logo remains pinned to the left */
   .logo {
     margin: 0;
     font-size: 24px;
     font-weight: bold;
     color: white;
+    white-space: nowrap;
   }
 
 .menu a {
